@@ -5,19 +5,19 @@ import tensorflow as tf
 app=Flask(__name__)
 
 
-UPLOAD_FOLDER='E:\major frontend\static'
+UPLOAD_FOLDER='E:\Major\CHEST_NET_-DENSET121-CUSTOM-\static'
 
 categories=['FIT_LUNGS','SICK_LUNGS']
-model = tf.keras.models.load_model('chest_net_deploy.h5')
+model = tf.keras.models.load_model('CHEST_NET_121_CNN.h5')
 
 def predict(filepath):
     img_size=110
     img_array=cv2.imread(filepath)
     img_array=cv2.resize(img_array,(img_size,img_size))
     new_array=img_array.reshape(-1,img_size,img_size,3) #[BATCHSIZE,*DIMENSIONS*,COLOR_CHANNELS]
-    new_array=new_array/255
+    new_array=new_array/255.0
     prediction=model.predict([new_array])
-    if prediction[0][0] > 0.43:
+    if prediction[0][0] > 0.5:
         return categories[1]
     elif prediction[0][0] <= 0.43:
         return categories[0]
