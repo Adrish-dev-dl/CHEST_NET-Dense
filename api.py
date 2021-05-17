@@ -19,7 +19,7 @@ def predict(filepath):
     prediction=model.predict([new_array])
     if prediction[0][0] > 0.5:
         return categories[1]
-    elif prediction[0][0] <= 0.43:
+    elif prediction[0][0] <= 0.5:
         return categories[0]
     
 @app.route("/",methods=['GET','POST'])
