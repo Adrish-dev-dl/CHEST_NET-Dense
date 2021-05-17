@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong">
     <title>PNUEMONIA DETECTION</title>
 
     <!-- Bootstrap core CSS -->
@@ -17,6 +17,28 @@
     background-image: url('/static/deep.png');
     background-repeat: repeat;
     background-position: left;
+    }
+    .borderexample {
+     border-style:inset;
+     border-color:white;
+     background-color:white;
+     font-family: "Audiowide", sans-serif;
+     font-size: 35px;
+        }
+     .bordertitle {
+     border-style:solid;
+     border-color:#287EC7;
+     background-color:white;
+     font-size: 25px;
+     font-family: Garamond, serif;
+     }
+     
+     .borderprediction {
+     border-style:solid;
+     border-color:red;
+     background-color:white;
+     font-family: Garamond, serif;
+     
     
     }
     </style>
@@ -24,14 +46,14 @@
 
   <body class="text-center">
     <form class="form-upload" action="{{url_for('upload_predict')}}" method=post enctype=multipart/form-data>
-      <h2 class="h3 mb-3 font-weight-normal"> CHEST-NET <h2>
-      <h1 class="h3 mb-3 font-weight-normal">Please upload image</h1>
+      <h2 class="borderexample"> CHEST-NET <h2>
+      <h1 class="bordertitle h3 mb-3 font-weight-normal">Please upload image</h1>
       <input type="file" id="image" name="image" class="form-control" required autofocus>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Predict</button><br>
       {% if image%}
       
       <img class="mb-4" src="static/{{image}}" alt="" width="256" height="256">
-      <p class="h3 mb-3 font-weight-normal"> {{Prediction}} </p>
+      <p class="borderprediction h3 mb-3 font-weight-normal"> {{Prediction}} </p>
       
       {% endif %}
     </form>
